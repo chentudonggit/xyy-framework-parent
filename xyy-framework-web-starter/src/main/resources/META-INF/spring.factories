@@ -1,0 +1,4 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.xyy.framework.web.WebAutoConfiguration,\
+  com.xyy.framework.web.common.config.FeignConfigRegistrar

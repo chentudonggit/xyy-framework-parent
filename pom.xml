@@ -19,6 +19,7 @@
     <!--请注意下面模块的先后顺序，不能随便乱调顺序-->
     <modules>
         <module>xyy-framework-common-starter</module>
+        <module>xyy-framework-web-starter</module>
     </modules>
 
     <!--依赖版本管理-->
