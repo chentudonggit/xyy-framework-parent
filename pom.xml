@@ -20,6 +20,8 @@
     <modules>
         <module>xyy-framework-common-starter</module>
         <module>xyy-framework-web-starter</module>
+        <module>xyy-framework-mysql-starter</module>
+        <module>xyy-framework-api-starter</module>
     </modules>
 
     <!--依赖版本管理-->
@@ -29,7 +31,9 @@
         <spring-boot.version>2.0.1.RELEASE</spring-boot.version>
         <springframework.version>5.0.5.RELEASE</springframework.version>
         <mybatis-spring-boot.version>1.3.1</mybatis-spring-boot.version>
+        <mybatis-plus.version>3.1.0</mybatis-plus.version>
         <mybatis.version>3.4.5</mybatis.version>
+        <data-jpa.version>2.0.1.RELEASE</data-jpa.version>
         <druid.version>1.1.6</druid.version>
         <druid-spring-boot.version>1.1.10</druid-spring-boot.version>
         <mysql-connector-java.version>5.1.45</mysql-connector-java.version>
@@ -68,11 +72,6 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql-connector-java.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis-spring-boot.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>

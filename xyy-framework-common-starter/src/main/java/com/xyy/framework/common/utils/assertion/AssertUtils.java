@@ -68,7 +68,7 @@ public class AssertUtils
     {
         if (Objects.isNull(obj) || StringUtils.isBlank(obj.toString()))
         {
-            throw new InsiderException(message);
+            throwMessageToWebDevelopment(message);
         }
     }
 
@@ -83,7 +83,7 @@ public class AssertUtils
     {
         if (Objects.isNull(obj) || StringUtils.isBlank(obj.toString()))
         {
-            throw new UnifiedException(message);
+            throwMessageToUser(message);
         }
     }
 
@@ -131,11 +131,7 @@ public class AssertUtils
      */
     public static void throwMessageToUser(String errorMessage) throws UnifiedException
     {
-        if (StringUtils.isBlank(errorMessage))
-        {
-            errorMessage = "未定义的错误";
-        }
-        throw new UnifiedException(errorMessage);
+        throw new UnifiedException(setMsg(errorMessage));
     }
 
     /**
@@ -145,10 +141,17 @@ public class AssertUtils
      */
     public static void throwMessageToWebDevelopment(String errorMessage)
     {
-        if (StringUtils.isBlank(errorMessage))
-        {
-            errorMessage = "未定义的错误";
-        }
-        throw new InsiderException(errorMessage);
+        throw new InsiderException(setMsg(errorMessage));
+    }
+
+    /**
+     * 封装msg
+     *
+     * @param msg msg
+     * @return String
+     */
+    private static String setMsg(String msg)
+    {
+        return StringUtils.isBlank(msg) ? "网络异常， 请稍后重试！" : msg;
     }
 }
