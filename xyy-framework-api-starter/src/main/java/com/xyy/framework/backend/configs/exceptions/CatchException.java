@@ -13,12 +13,14 @@ import feign.RetryableException;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.net.SocketTimeoutException;
 import java.util.Objects;
 
 /**
@@ -29,6 +31,7 @@ import java.util.Objects;
  * @since 1.0
  */
 @ControllerAdvice
+@Configuration
 public class CatchException
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(CatchException.class);
@@ -48,6 +51,7 @@ public class CatchException
         //在这里加入一些基础的异常类型判断
         builder.put(RetryableException.class, CommonCode.SERVICE_CALL_ERROR);
         builder.put(ClientException.class, CommonCode.SERVICE_CALL_ERROR);
+        builder.put(SocketTimeoutException.class, CommonCode.SERVICE_CALL_ERROR);
         builder.put(HttpMessageNotReadableException.class, CommonCode.MISSING_REQUEST_BODY);
     }
 
