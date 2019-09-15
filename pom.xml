@@ -22,6 +22,7 @@
         <module>xyy-framework-web-starter</module>
         <module>xyy-framework-mysql-starter</module>
         <module>xyy-framework-api-starter</module>
+        <module>xyy-framework-security-oauth2-starter</module>
     </modules>
 
     <!--依赖版本管理-->
