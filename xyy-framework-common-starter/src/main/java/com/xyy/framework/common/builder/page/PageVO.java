@@ -1,8 +1,9 @@
 package com.xyy.framework.common.builder.page;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Collection;
 import java.util.Objects;
 
 /**
@@ -12,29 +13,34 @@ import java.util.Objects;
  * @date 2019/9/14 13:35
  * @since 1.0
  */
-public class Page<T>
+public class PageVO<T>
 {
     /**
      * page
      */
+    @JSONField(name="page")
     private Integer page;
     /**
      * size
      */
+    @JSONField(name="size")
     private Integer size;
     /**
      * totalPage
      */
+    @JSONField(name="total_page")
     private Integer totalPage;
     /**
      * totalCount
      */
+    @JSONField(name="total_count")
     private Long totalCount;
 
     /**
      * result
      */
-    private List<T> result = Collections.emptyList();
+    @JSONField(name="data")
+    private Collection<T> data;
 
     public Integer getPage()
     {
@@ -77,14 +83,14 @@ public class Page<T>
         this.totalCount = totalCount;
     }
 
-    public List<T> getResult()
+    public Collection<T> getData()
     {
-        return result;
+        return data;
     }
 
-    public void setResult(List<T> result)
+    public void setData(Collection<T> data)
     {
-        this.result = result;
+        this.data = data;
     }
 
     /**
@@ -95,14 +101,14 @@ public class Page<T>
      * @param <T>  <T>
      * @return Page<T>
      */
-    public static <T> Page<T> init(Integer page, Integer size)
+    public static <T> PageVO<T> init(Integer page, Integer size)
     {
-        Page<T> result = new Page<>();
+        PageVO<T> result = new PageVO<>();
         result.setTotalCount(0L);
         result.setPage(Objects.isNull(page) ? 0 : size);
         result.setSize(Objects.isNull(size) ? 10 : size);
         result.setTotalPage(0);
-        result.setResult(new ArrayList<T>());
+        result.setData(new ArrayList<>());
         return result;
     }
 }

@@ -1,6 +1,6 @@
 package com.xyy.framework.web.response;
 
-import com.xyy.framework.common.builder.page.Page;
+import com.xyy.framework.common.builder.page.PageVO;
 import com.xyy.framework.common.web.response.code.ResultCode;
 import org.springframework.http.HttpStatus;
 
@@ -125,13 +125,13 @@ public class ResponseResult extends LinkedHashMap<String, Object>
      * @return ResponseResult
      * @since 1.0
      */
-    public static ResponseResult data(Page page)
+    public static ResponseResult data(PageVO page)
     {
         HttpStatus httpStatus = HttpStatus.OK;
         ResponseResult responseResult = new ResponseResult(httpStatus.value(), true,
                 httpStatus.getReasonPhrase());
         //分页数据
-        responseResult.put(KEY_DATA, page.getResult());
+        responseResult.put(KEY_DATA, page.getData());
         responseResult.put(KEY_TOTAL_PAGE, page.getTotalPage());
         responseResult.put(KEY_TOTAL_COUNT, page.getTotalCount());
         responseResult.put(KEY_PAGE, page.getPage());
