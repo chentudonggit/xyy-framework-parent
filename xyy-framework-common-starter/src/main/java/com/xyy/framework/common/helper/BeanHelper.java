@@ -1,6 +1,8 @@
 package com.xyy.framework.common.helper;
 
-import com.xyy.framework.common.uilts.AssertUtils;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.xyy.framework.common.builder.page.PageVO;
+import com.xyy.framework.common.utils.AssertUtils;
 import org.dozer.DozerBeanMapper;
 
 import java.util.*;
@@ -38,6 +40,43 @@ public class BeanHelper
     public static <T, S> T convert(S s, Class<T> tClass)
     {
         return Objects.isNull(s) ? null : dozerBeanMapper.map(s, tClass);
+    }
+    /**
+     * 实体转换
+     *
+     * @param s      源
+     * @param tClass 目标
+     * @param <T>    T
+     * @param <S>    S
+     */
+    public static <T, S> PageVO<T> convert(IPage<S> s, Class<T> tClass)
+    {
+        PageVO<T> result = new PageVO<>();
+        result.setData(new ArrayList<>());
+        int page = 0;
+        int pages = 0;
+        int size = 10;
+        long total = 0;
+        if(Objects.nonNull(s))
+        {
+            page= (int) s.getCurrent();
+            size = (int)s.getSize();
+            pages =(int)s.getPages();
+            total = s.getTotal();
+            List<S> records = s.getRecords();
+            if(Objects.nonNull(records))
+            {
+                for (S record : records)
+                {
+                    result.getData().add(convert(record, tClass));
+                }
+            }
+        }
+        result.setPage(page);
+        result.setSize(size);
+        result.setTotalPage(pages);
+        result.setTotalCount(total);
+        return result;
     }
 
     /**
@@ -78,4 +117,5 @@ public class BeanHelper
         }
         return (T) map.get(key);
     }
+
 }

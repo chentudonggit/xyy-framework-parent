@@ -1,4 +1,4 @@
-package com.xyy.framework.common.uilts;
+package com.xyy.framework.common.utils;
 
 import com.xyy.framework.common.exceptions.runtime.InsiderException;
 import com.xyy.framework.common.exceptions.runtime.UnifiedException;
