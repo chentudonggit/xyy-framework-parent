@@ -41,6 +41,7 @@ public class BeanHelper
     {
         return Objects.isNull(s) ? null : dozerBeanMapper.map(s, tClass);
     }
+
     /**
      * 实体转换
      *
@@ -57,14 +58,14 @@ public class BeanHelper
         int pages = 0;
         int size = 10;
         long total = 0;
-        if(Objects.nonNull(s))
+        if (Objects.nonNull(s))
         {
-            page= (int) s.getCurrent();
-            size = (int)s.getSize();
-            pages =(int)s.getPages();
+            page = (int) s.getCurrent();
+            size = (int) s.getSize();
+            pages = (int) s.getPages();
             total = s.getTotal();
             List<S> records = s.getRecords();
-            if(Objects.nonNull(records))
+            if (Objects.nonNull(records))
             {
                 for (S record : records)
                 {
@@ -117,5 +118,4 @@ public class BeanHelper
         }
         return (T) map.get(key);
     }
-
 }
