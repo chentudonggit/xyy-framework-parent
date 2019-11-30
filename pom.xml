@@ -23,6 +23,7 @@
         <module>xyy-framework-mysql-starter</module>
         <module>xyy-framework-api-starter</module>
         <module>xyy-framework-security-oauth2-starter</module>
+        <module>xyy-framework-mybaites-plus-starter</module>
     </modules>
 
     <!--依赖版本管理-->
@@ -174,6 +175,17 @@
                 <groupId>net.sf.dozer</groupId>
                 <artifactId>dozer</artifactId>
                 <version>${dozer.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>${mybatis-plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-extension</artifactId>
+                <version>${mybatis-plus.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
