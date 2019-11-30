@@ -24,4 +24,9 @@ public class EurekaServerType
      */
     public static final String STUDENT_SERVER = "xyy-student-server";
 
+    /**
+     * 天气服务
+     */
+    public static final String WEATHER_SERVER = "xyy-weather-server";
+
 }
