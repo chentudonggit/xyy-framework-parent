@@ -21,6 +21,29 @@ public class AssertUtils
     }
 
     /**
+     * @param obj    obj
+     * @param result result
+     * @param <T>    <T>
+     * @return T
+     */
+    public static <T> T isNull(Object obj, Object result)
+    {
+        return (Objects.nonNull(obj) && StringUtils.isNotBlank(obj.toString())) ? transform(obj) : transform(result);
+    }
+
+    /**
+     * 类型转换
+     *
+     * @param obj obj
+     * @param <T> <T>
+     * @return T
+     */
+    public static <T> T transform(Object obj)
+    {
+        return (T) obj;
+    }
+
+    /**
      * 判空抛异常给开发者
      *
      * @param obj obj
