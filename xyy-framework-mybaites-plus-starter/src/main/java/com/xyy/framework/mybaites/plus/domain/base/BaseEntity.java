@@ -14,7 +14,7 @@ import java.util.Date;
  * @date 2019/11/17 17:53
  * @since 1.0
  */
-public abstract class BaseEntity<T extends Model> extends Model<T>
+public abstract class BaseEntity<T extends Model<T>> extends Model<T>
 {
     private static final long serialVersionUID = -7889389151848072207L;
     /**

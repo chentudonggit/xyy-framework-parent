@@ -33,6 +33,8 @@
         <spring-boot.version>2.0.1.RELEASE</spring-boot.version>
         <springframework.version>5.0.5.RELEASE</springframework.version>
         <mybatis-spring-boot.version>1.3.1</mybatis-spring-boot.version>
+        <mybatis-plus-support.version>2.1.6</mybatis-plus-support.version>
+        <mybatis-plus-core.version>3.1.0</mybatis-plus-core.version>
         <mybatis-plus.version>3.1.0</mybatis-plus.version>
         <mybatis.version>3.4.5</mybatis.version>
         <data-jpa.version>2.0.1.RELEASE</data-jpa.version>
@@ -98,8 +100,13 @@
             </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus</artifactId>
+                <version>${mybatis-plus-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-support</artifactId>
-                <version>${mybatis-plus.version}</version>
+                <version>${mybatis-plus-support.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>

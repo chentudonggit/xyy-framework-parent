@@ -1,6 +1,6 @@
 package com.xyy.framework.common.utils.format;
 
-import com.xyy.framework.common.utils.AssertUtils;
+import com.xyy.framework.common.utils.assertion.AssertUtils;
 
 import java.util.Calendar;
 import java.util.Date;

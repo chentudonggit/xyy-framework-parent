@@ -1,5 +1,8 @@
 mybatis-plus:
-  mapper-locations: classpath*:/mapper/**/*.xml
+  mapper-locations:
+    - classpath*:/mapper/**/*.xml
+    - classpath*:/mybatis/mapper/**/*.xml
+
   typeAliasesPackage: com.xyy.**.domian.**
   global-config:
     banner: false

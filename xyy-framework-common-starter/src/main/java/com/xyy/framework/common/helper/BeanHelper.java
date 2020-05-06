@@ -2,7 +2,7 @@ package com.xyy.framework.common.helper;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.xyy.framework.common.builder.page.PageVO;
-import com.xyy.framework.common.utils.AssertUtils;
+import com.xyy.framework.common.utils.assertion.AssertUtils;
 import org.dozer.DozerBeanMapper;
 
 import java.util.*;
@@ -116,6 +116,6 @@ public class BeanHelper
         {
             return null;
         }
-        return (T) map.get(key);
+        return AssertUtils.transform(map.get(key));
     }
 }

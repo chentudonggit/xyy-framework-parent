@@ -1,6 +1,6 @@
 package com.xyy.framework.common.utils.rsa;
 
-import com.xyy.framework.common.utils.AssertUtils;
+import com.xyy.framework.common.utils.assertion.AssertUtils;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 

@@ -25,7 +25,7 @@ public class AssertUtils
      *
      * @return String
      */
-    public static String isNull(String key)
+    public static String isNullReturnParam(String key)
     {
         if (StringUtils.isBlank(key))
         {
@@ -56,20 +56,6 @@ public class AssertUtils
             }
         }
         return flag;
-    }
-
-    /**
-     * obj为空抛出message
-     *
-     * @param obj     obj
-     * @param message message
-     */
-    public static void isNull(Object obj, String message)
-    {
-        if (Objects.isNull(obj) || StringUtils.isBlank(obj.toString()))
-        {
-            throwMessageToWebDevelopment(message);
-        }
     }
 
     /**
@@ -135,16 +121,6 @@ public class AssertUtils
     }
 
     /**
-     * 抛异常给开发工程师
-     *
-     * @param errorMessage errorMessage
-     */
-    public static void throwMessageToWebDevelopment(String errorMessage)
-    {
-        throw new InsiderException(setMsg(errorMessage));
-    }
-
-    /**
      * 封装msg
      *
      * @param msg msg
@@ -153,5 +129,133 @@ public class AssertUtils
     private static String setMsg(String msg)
     {
         return StringUtils.isBlank(msg) ? "网络异常， 请稍后重试！" : msg;
+    }
+
+    /**
+     * @param obj    obj
+     * @param result result
+     * @param <T>    <T>
+     * @return T
+     */
+    public static <T> T isNull(Object obj, Object result)
+    {
+        return (Objects.nonNull(obj) && StringUtils.isNotBlank(obj.toString())) ? transform(obj) : transform(result);
+    }
+
+    /**
+     * 类型转换
+     *
+     * @param obj obj
+     * @param <T> <T>
+     * @return T
+     */
+    public static <T> T transform(Object obj)
+    {
+        return (T) obj;
+    }
+
+    /**
+     * 判空抛异常给开发者
+     *
+     * @param obj obj
+     * @param msg msg
+     */
+    public static void isNull(Object obj, String msg)
+    {
+        if (isNull(obj))
+        {
+            msgDevelopment(msg);
+        }
+    }
+
+    /**
+     * isNullToUser
+     *
+     * @param obj obj
+     * @param msg msg
+     */
+    public static void isNullToUser(Object obj, String msg)
+    {
+        if (isNull(obj))
+        {
+            msgUser(msg);
+        }
+    }
+
+    /**
+     * boolean isNull
+     *
+     * @param obj obj
+     * @return boolean
+     */
+    public static boolean isNull(Object obj)
+    {
+        return (Objects.isNull(obj) || StringUtils.isBlank(obj.toString()));
+    }
+
+    /**
+     * 为空， 抛出RuntimeException
+     *
+     * @param obj obj
+     * @param e   e
+     */
+    public static void isNull(Object obj, RuntimeException e)
+    {
+        if (isNull(obj))
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 判断为空,返回 null
+     *
+     * @param obj obj
+     * @param <T> <T>
+     * @return T
+     */
+    public static <T> T isNullReturnNull(Object obj)
+    {
+        return isNull(obj) ? null : (T) obj;
+    }
+
+    /**
+     * msgDevelopment
+     *
+     * @param msg msg
+     */
+    public static void msgDevelopment(String msg)
+    {
+        throw new InsiderException(msg(msg));
+    }
+
+    /**
+     * msgUser
+     *
+     * @param msg msg
+     */
+    public static void msgUser(String msg)
+    {
+        throw new UnifiedException(msg(msg));
+    }
+
+    /**
+     * msg
+     *
+     * @param msg msg
+     * @return String
+     */
+    public static String msg(String msg)
+    {
+        return StringUtils.isBlank(msg) ? "网络异常，请稍后重试！" : msg;
+    }
+
+    public static <T> T isNullReturnParam(Object obj, T t)
+    {
+        if (isNull(obj))
+        {
+            return t;
+        }
+        return transform(obj);
     }
 }
