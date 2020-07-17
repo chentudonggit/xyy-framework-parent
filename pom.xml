@@ -14,7 +14,7 @@
     <groupId>com.xyy.framework</groupId>
     <artifactId>xyy-framework-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.ALPHA</version>
+    <version>1.0.RELEASE</version>
 
     <!--请注意下面模块的先后顺序，不能随便乱调顺序-->
     <modules>
